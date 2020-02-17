@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Yiven" />
+<meta name="description" content="jQuery scroll pagination" />
+<meta name="keywords" content="jquery, plugin, scroll, pagination, scroll pagination, html5" /> 
+<title>jQuery ScrollPagination</title>
+<link href="css/scrollpagination.css" rel="stylesheet" media="screen" />
+<link href="css/highlight.pack.css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/scrollpagination.js"></script>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+    $(function(){
+        $('#content').scrollPagination({
+            'url': 'democontent.json',
+            'data': {
+                'page': 1,
+                'size': 15
+            },
+            //'scroller': $(window),
+            // 'autoload':false,
+            'heightOffset': 0,
+            'loading': "#loading",
+            //'loadingText': 'click to loading more.',
+            //'loadingNomoreText': 'No more.',
+            // 'before': function(){  
+            // },
+            // 'after': function(elementsLoaded){
+            //     $(elementsLoaded).fadeInWithDelay();
+            // }
+        });
+    });
+</script>
+</head>
+<body>
+<div id="scrollpagination">
+    <div class="about">
+        <h1>jQuery ScrollPagination - <a href="https://gitee.com/yiven" target="_blank">@Yiven</a></h1>
+        <p>jQuery ScrollPagination plugin has been developed by <a href="https://www.yiiven.cn" target="_blank">Yiven</a> for studying purposes, you may use it for free in any project you want, please maintain the credits.</p>
+    </div>
+     <div class="about">
+        <h1>Official post in</h1>
+        <p><a href="https://github.com/vancevol/jquery-scroll-pagination" target="_blank">Github</a></p>
+        <p><a href="https://gitee.com/yiven/jquery-scroll-pagination" target="_blank">Gitee</a></p>
+    </div>
+    <div class="about">
+        <h1>Example</h1>
+<pre><code class="javascript">$(function(){
+    $('#content').scrollPagination({
+        'url': 'democontent.json', // The url you are fetching the results.
+        'data': {
+            // These are the variables you can pass to the request
+            'page': 1, // Which page at the firsttime
+            'size': 15, // Number of pages
+        },
+        'scroller': $(window), // Who gonna scroll? default is the full window
+        'autoload':false, // Change this to false if you want to load manually, default true.
+        'heightOffset': 0, // It gonna request when scroll is 10 pixels before the page ends
+        'loading': "#loading", // ID of loading prompt.
+        'loadingText': 'click to loading more.', // Text of loading prompt.
+        'loadingNomoreText': 'No more.', // No more of loading prompt.
+        'manuallyText': 'click to loading more.', // Click of loading prompt.
+        'before': function(){  
+            // Before load function, you can display a preloader div
+            // example: 
+            $(this.loading).fadeIn();
+        },
+        'after': function(elementsLoaded){
+            // After loading content, you can use this function to animate your new elements
+            // example:
+            $(this.loading).fadeOut();
+            $(elementsLoaded).fadeInWithDelay();
+        }
+    });
+});</code></pre>
+    </div>
+    <ul id="content"></ul>
+    <div class="loading" id="loading"></div>
+</div>
+</body>
+</html>
